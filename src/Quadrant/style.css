@@ -1,68 +1,110 @@
 #quadrant,
 #quadrant-wrapper {
-    box-sizing: border-box;
-    margin: 0 auto;
-    max-width: 650px;
-    width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 650px;
+  width: 100%;
 }
 
 #quadrant-wrapper {
-    --border-size: 3px;
-    max-height: 650px;
-    position: relative;
+  --border-size: 3px;
+  max-height: 650px;
+  position: relative;
 }
 
 #quadrant .scale-wrapper {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 #graph {
-    border: var(--border-size) solid;
-    box-sizing: border-box;
-    padding-top: calc(100% - 2 * var(--border-size));
-    width: 100%;
+  border: var(--border-size) solid;
+  box-sizing: border-box;
+  padding-top: calc(100% - 2 * var(--border-size));
+  width: 100%;
 }
 
 #inner-quadrant {
-    position: absolute;
-    top: var(--border-size);
-    left: var(--border-size);
-    bottom: var(--border-size);
-    right: var(--border-size);
+  position: absolute;
+  top: var(--border-size);
+  left: var(--border-size);
+  bottom: var(--border-size);
+  right: var(--border-size);
 }
 
 #vertical-divider {
-    border-left: 1px dashed;
-    height: calc(100% - 2 * var(--border-size));
-    left: 50%;
-    position: absolute;
-    top: var(--border-size);
+  border-left: 1px dashed;
+  height: calc(100% - 2 * var(--border-size));
+  left: 50%;
+  position: absolute;
+  top: var(--border-size);
 }
 
 #horizontal-divider {
-    border-bottom: 1px dashed;
-    left: var(--border-size);
-    position: absolute;
-    top: 50%;
-    width: calc(100% - 2 * var(--border-size));
+  border-bottom: 1px dashed;
+  left: var(--border-size);
+  position: absolute;
+  top: 50%;
+  width: calc(100% - 2 * var(--border-size));
 }
 
-#vertical-guide, #horizontal-guide {
-    position: absolute;
+#vertical-guide,
+#horizontal-guide {
+  position: absolute;
 }
 
 #vertical-guide {
-    border-left: 1px solid;
-    display: none;
-    height: calc(100% - 2 * var(--border-size));
-    top: var(--border-size);
+  border-left: 1px solid;
+  display: none;
+  height: calc(100% - 2 * var(--border-size));
+  top: var(--border-size);
 }
 
 #horizontal-guide {
-    border-top: 1px solid;
-    display: none;
-    left: var(--border-size);
-    width: calc(100% - 2 * var(--border-size));
+  border-top: 1px solid;
+  display: none;
+  left: var(--border-size);
+  width: calc(100% - 2 * var(--border-size));
+}
+
+#app {
+  font-family: "Fredoka One", cursive;
+}
+
+.title {
+  font-size: 18px;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+.container {
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  border-radius: 70%;
+  height: 20px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.location {
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+  background-color: #c0392b;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: locate 1.2s infinite alternate;  
+}
+
+@keyframes locate {
+  from { opacity: 1 }
+  to { opacity: 0; }
 }

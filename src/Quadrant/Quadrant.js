@@ -7,7 +7,7 @@ class Quadrant extends Component {
 
     this.state = {
       checkedManagers: [],
-      searchByName: '',
+      searchByName: "",
       workers: this.props.points,
       filteredWorkers: this.props.points
     };
@@ -51,19 +51,19 @@ class Quadrant extends Component {
     }
   };
 
-  onChange = (e) => {
+  onChange = e => {
     const searchByName = e.target.value.toLowerCase();
-    this.setState({ searchByName }, () => this.filterName())
-  }
+    this.setState({ searchByName }, () => this.filterName());
+  };
 
   filterName() {
-    let workers = this.state.workers
-    let searchByName = this.state.searchByName
+    let workers = this.state.workers;
+    let searchByName = this.state.searchByName;
 
     workers = workers.filter(function(w) {
-      return w.name.toLowerCase().indexOf(searchByName) != -1
-    })
-    this.setState({ filteredWorkers: workers })
+      return w.name.toLowerCase().indexOf(searchByName) != -1;
+    });
+    this.setState({ filteredWorkers: workers });
   }
 
   render() {
@@ -96,15 +96,15 @@ class Quadrant extends Component {
                     key={worker.id}
                     style={{
                       fontSize: "14px",
-                      left: worker.x*2.5 + "pt",
-                      bottom: worker.y*2.5 + "pt",
+                      left: worker.x * 2.5 + "pt",
+                      bottom: worker.y * 2.5 + "pt",
                       position: "absolute",
                       width: "100px"
                     }}
                   >
-                    {"( " + worker.x + ", " + worker.y + ")"}
-                    <br />
-                    {worker.name}
+                    <div style={{ textAlign: "center" }}>{"( " + worker.x + ", " + worker.y + ")"}</div>
+                    <div style ={{ textAlign: "center" }}>{worker.name}</div>
+                    <div className="location"></div>
                   </span>
                 );
               })}
@@ -116,25 +116,29 @@ class Quadrant extends Component {
           <span>200%</span>
         </div>
         <div className="filter">
-          <h5>Filter by Managers:</h5>
-          {managers.map((manager, id) => {
-            return (
-              <label className="container" key={id}>
-                <input
-                  type="checkbox"
-                  onClick={this.handleFilter}
-                  value={manager.id}
-                />
-                {manager.name}
-              </label>
-            );
-          })}
+          <h5 className="title">
+            Filter by Managers:
+            {managers.map((manager, id) => {
+              return (
+                <label className="container" key={id}>
+                  <input
+                    type="checkbox"
+                    onClick={this.handleFilter}
+                    value={manager.id}
+                  />
+                  {manager.name}
+                </label>
+              );
+            })}
+          </h5>
         </div>
         <div className="search">
-          <h5>Search by Worker Names:</h5>
-          <input type="text" onChange={this.onChange} />
+          <h5 className="title">
+            Search by Worker Names:
+            <input type="text" onChange={this.onChange} id="workerInput" />
+          </h5>
         </div>
-        <div className="title">
+        <div>
           <h1 style={{ textAlign: "center" }}>Where are my workers?? ಠ_ಠ</h1>
         </div>
       </div>
