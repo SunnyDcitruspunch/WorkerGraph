@@ -68,7 +68,7 @@ class Quadrant extends Component {
 
   render() {
     const managers = this.props.points.filter(
-      x => !!this.props.points.find(y => y.managerId == x.id)
+      x => this.props.points.find(y => y.managerId == x.id)
     );
 
     return (
@@ -102,8 +102,8 @@ class Quadrant extends Component {
                       width: "100px"
                     }}
                   >
-                    <div style={{ textAlign: "center" }}>{"( " + worker.x + ", " + worker.y + ")"}</div>
-                    <div style ={{ textAlign: "center" }}>{worker.name}</div>
+                    <div className="text">{"( " + worker.x + ", " + worker.y + ")"}</div>
+                    <div className="text">{worker.name}</div>
                     <div className="location"></div>
                   </span>
                 );
@@ -139,7 +139,7 @@ class Quadrant extends Component {
           </h5>
         </div>
         <div>
-          <h1 style={{ textAlign: "center" }}>Where are my workers?? ಠ_ಠ</h1>
+          <h1 className="text">Where are my workers?? ಠ_ಠ</h1>
         </div>
       </div>
     );
