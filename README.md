@@ -1,4 +1,4 @@
-# DataBased Take Home Project Boilerplate
+# Sunny's DataBased Take Home Project Boilerplate
 
 Your assignment is to design and implement a filter for the points on a graph.
 
