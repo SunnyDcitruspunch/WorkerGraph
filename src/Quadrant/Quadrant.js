@@ -61,8 +61,8 @@ class Quadrant extends Component {
     }
     console.log(this.state.checkedManagers);
     console.log(
-      this.props.points.filter(
-        x => this.state.checkedManagers.find(y => y == x.managerId)
+      this.props.points.filter(x =>
+        this.state.checkedManagers.find(y => y == x.managerId)
       )
     );
   };
@@ -88,18 +88,27 @@ class Quadrant extends Component {
             {this.props.points
               .filter(
                 x =>
-                  this.state.checkedManagers.find(y => y == x.managerId) || x.managerId == null
+                  this.state.checkedManagers.find(y => y == x.managerId) ||
+                  x.managerId == null
               )
               .map(worker => {
                 return (
                   <span
                     key={worker.id}
                     style={{
-                      left: worker.x + "px",
-                      top: worker.y + "px",
-                      position: "absolute"
+                      fontSize: "12px",
+                      left: worker.x*2 + "pt",
+                      bottom: worker.y*2 + "pt",
+                      position: "absolute",
+                      width: "100px"
                     }}
                   >
+                    {"( "}
+                    {worker.x}
+                    {", "}
+                    {worker.y}
+                    {")"}
+                    <br />
                     {worker.name}
                   </span>
                 );
@@ -127,8 +136,12 @@ class Quadrant extends Component {
             );
           })}
         </div>
+        <div className="search">
+          <h5>Search by Worker Names:</h5>
+          <input type="text" />
+        </div>
         <div className="title">
-          <h1>Where are my workers?? ಠ_ಠ</h1>
+          <h1 style={{ textAlign: "center" }}>Where are my workers?? ಠ_ಠ</h1>
         </div>
       </div>
     );
