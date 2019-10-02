@@ -1,25 +1,15 @@
 import React, { Component } from "react";
 import "./style.css";
 
-/*
-type IProps = {
-  points: {
-    id: number
-    managerId: number
-    name: string
-    x: number
-    y: number
-  }[]  
-}
-*/
-
 class Quadrant extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       checkedManagers: [],
-      managers: []
+      searchByName: '',
+      workers: this.props.points,
+      filteredWorkers: this.props.points
     };
   }
 
@@ -59,13 +49,22 @@ class Quadrant extends Component {
         )
       });
     }
-    console.log(this.state.checkedManagers);
-    console.log(
-      this.props.points.filter(x =>
-        this.state.checkedManagers.find(y => y == x.managerId)
-      )
-    );
   };
+
+  onChange = (e) => {
+    const searchByName = e.target.value.toLowerCase();
+    this.setState({ searchByName }, () => this.filterName())
+  }
+
+  filterName() {
+    let workers = this.state.workers
+    let searchByName = this.state.searchByName
+
+    workers = workers.filter(function(w) {
+      return w.name.toLowerCase().indexOf(searchByName) != -1
+    })
+    this.setState({ filteredWorkers: workers })
+  }
 
   render() {
     const managers = this.props.points.filter(
@@ -85,7 +84,7 @@ class Quadrant extends Component {
           <div id="graph">
             <figure id="vertical-divider"></figure>
             <figure id="horizontal-divider"></figure>
-            {this.props.points
+            {this.state.filteredWorkers
               .filter(
                 x =>
                   this.state.checkedManagers.find(y => y == x.managerId) ||
@@ -96,18 +95,14 @@ class Quadrant extends Component {
                   <span
                     key={worker.id}
                     style={{
-                      fontSize: "12px",
-                      left: worker.x*2 + "pt",
-                      bottom: worker.y*2 + "pt",
+                      fontSize: "14px",
+                      left: worker.x*2.5 + "pt",
+                      bottom: worker.y*2.5 + "pt",
                       position: "absolute",
                       width: "100px"
                     }}
                   >
-                    {"( "}
-                    {worker.x}
-                    {", "}
-                    {worker.y}
-                    {")"}
+                    {"( " + worker.x + ", " + worker.y + ")"}
                     <br />
                     {worker.name}
                   </span>
@@ -131,14 +126,13 @@ class Quadrant extends Component {
                   value={manager.id}
                 />
                 {manager.name}
-                <span className="checkmark"></span>
               </label>
             );
           })}
         </div>
         <div className="search">
           <h5>Search by Worker Names:</h5>
-          <input type="text" />
+          <input type="text" onChange={this.onChange} />
         </div>
         <div className="title">
           <h1 style={{ textAlign: "center" }}>Where are my workers?? ಠ_ಠ</h1>
