@@ -1,0 +1,23 @@
+# Mac OSX files
+*.DS_Store
+
+# WebStorm project files
+.idea/
+
+# Node stuff
+node_modules/
+.npm
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+
+# Log files
+*.log
+
+# Compiled project files
+dist/
+
+# Parcel
+.cache/

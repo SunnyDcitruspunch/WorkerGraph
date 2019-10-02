@@ -1,0 +1,68 @@
+#quadrant,
+#quadrant-wrapper {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 650px;
+    width: 100%;
+}
+
+#quadrant-wrapper {
+    --border-size: 3px;
+    max-height: 650px;
+    position: relative;
+}
+
+#quadrant .scale-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#graph {
+    border: var(--border-size) solid;
+    box-sizing: border-box;
+    padding-top: calc(100% - 2 * var(--border-size));
+    width: 100%;
+}
+
+#inner-quadrant {
+    position: absolute;
+    top: var(--border-size);
+    left: var(--border-size);
+    bottom: var(--border-size);
+    right: var(--border-size);
+}
+
+#vertical-divider {
+    border-left: 1px dashed;
+    height: calc(100% - 2 * var(--border-size));
+    left: 50%;
+    position: absolute;
+    top: var(--border-size);
+}
+
+#horizontal-divider {
+    border-bottom: 1px dashed;
+    left: var(--border-size);
+    position: absolute;
+    top: 50%;
+    width: calc(100% - 2 * var(--border-size));
+}
+
+#vertical-guide, #horizontal-guide {
+    position: absolute;
+}
+
+#vertical-guide {
+    border-left: 1px solid;
+    display: none;
+    height: calc(100% - 2 * var(--border-size));
+    top: var(--border-size);
+}
+
+#horizontal-guide {
+    border-top: 1px solid;
+    display: none;
+    left: var(--border-size);
+    width: calc(100% - 2 * var(--border-size));
+}
